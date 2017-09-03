@@ -3,6 +3,7 @@
 namespace App\Judite\Contracts\Registry;
 
 use App\Judite\Models\Enrollment;
+use App\Judite\Models\Student;
 
 interface ExchangeRegistry
 {
@@ -20,4 +21,11 @@ interface ExchangeRegistry
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginate();
+
+    /**
+     * Get the exchanges history paginator of a given student.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function historyOfStudent(Student $student);
 }

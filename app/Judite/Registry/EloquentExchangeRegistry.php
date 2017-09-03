@@ -4,6 +4,7 @@ namespace App\Judite\Registry;
 
 use App\Judite\Models\Enrollment;
 use App\Judite\Models\ExchangeRegistryEntry;
+use App\Judite\Models\Student;
 use App\Judite\Contracts\Registry\ExchangeRegistry;
 
 class EloquentExchangeRegistry implements ExchangeRegistry
@@ -27,5 +28,18 @@ class EloquentExchangeRegistry implements ExchangeRegistry
     public function paginate()
     {
         return ExchangeRegistryEntry::latest('id')->paginate();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function historyOfStudent(Student $student)
+    {
+        $history = ExchangeRegistryEntry::where('from_student_id', $student->id)
+                    ->orWhere('to_student_id', $student->id)
+                    ->orderBy('updated_at', 'dsc')
+                    ->paginate();
+
+        return $history;
     }
 }
