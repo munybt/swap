@@ -125,5 +125,25 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.steps.min.js') }}"></script>
+<script>
+    $("#steps-left").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true,
+        enableKeyNavigation: false,
+        saveState: true
+    });
+    $("#shift-exchange-btn, #student-exchange-btn").click((e)=>{
+        const target_id = e.target.id
+        $("#shift-exchange-btn, #student-exchange-btn").removeAttr("style")
+        $(e.target).css("background-color","#3a2658")
+        $(e.target).css("color","white")
+        $("div[id$=exchange-form]").hide()
+        $("#" + target_id.slice(0, target_id.length-3) + "form").show()
+
+    })
+</script>
 </body>
 </html>
