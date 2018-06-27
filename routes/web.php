@@ -31,6 +31,7 @@ Route::delete('/exchanges/{id}', 'ExchangeController@destroy')->name('exchanges.
 Route::get('/registrations/confirm/{token}', 'Auth\AccountVerificationController@store')->name('register.confirm');
 Route::post('/registrations/email', 'Auth\AccountVerificationController@sendEmail')->name('register.resend_confirmation');
 
+Route::get('/swapsolver','EnrollmentExchangeController@swapsolver');
 /*
  * Admin routes
  */

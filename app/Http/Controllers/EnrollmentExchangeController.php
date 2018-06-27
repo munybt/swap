@@ -112,4 +112,8 @@ class EnrollmentExchangeController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function swapSolver(){
+        echo "Ola";
+            }
 }
