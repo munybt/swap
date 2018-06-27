@@ -105382,7 +105382,7 @@ exports = module.exports = __webpack_require__(12)(false);
 
 
 // module
-exports.push([module.i, "\n.custom-file-control:lang(en):empty::after {\n    content: attr(data-selected);\n}\n", ""]);
+exports.push([module.i, "\n.custom-file-control:lang(en):empty::after {\r\n    content: attr(data-selected);\n}\r\n", ""]);
 
 // exports
 

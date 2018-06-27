@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Exchange\CreateRequest;
 use App\Exceptions\EnrollmentCannotBeExchangedException;
 use App\Exceptions\ExchangeEnrollmentsOnDifferentCoursesException;
-
+use App\Providers\SwapSolverServiceProvider;
 class EnrollmentExchangeController extends Controller
 {
     /**
@@ -114,6 +114,88 @@ class EnrollmentExchangeController extends Controller
     }
 
     public function swapSolver(){
-        echo "Ola";
-            }
+        $exchange_requests = '{
+            "exchange_requests":[
+                {
+                    "id": "a1",
+                    "from_shift_id": "TP1",
+                    "to_shift_id": "TP2",
+                    "created_at": 1
+                },
+                {
+                    "id": "a2",
+                    "from_shift_id": "TP1",
+                    "to_shift_id": "TP3",
+                    "created_at": 1
+                },
+                {
+                    "id": "a3",
+                    "from_shift_id": "TP1",
+                    "to_shift_id": "TP4",
+                    "created_at": 1
+                },
+                {
+                    "id": "a4",
+                    "from_shift_id": "TP2",
+                    "to_shift_id": "TP1",
+                    "created_at": 2
+                },
+                {
+                    "id": "a5",
+                    "from_shift_id": "TP2",
+                    "to_shift_id": "TP3",
+                    "created_at": 2
+                },
+                {
+                    "id": "a6",
+                    "from_shift_id": "TP2",
+                    "to_shift_id": "TP4",
+                    "created_at": 2
+                },
+                {
+                    "id": "a7",
+                    "from_shift_id": "TP3",
+                    "to_shift_id": "TP1",
+                    "created_at": 3
+                },
+                {
+                    "id": "a8",
+                    "from_shift_id": "TP3",
+                    "to_shift_id": "TP2",
+                    "created_at": 3
+                },
+                {
+                    "id": "a9",
+                    "from_shift_id": "TP3",
+                    "to_shift_id": "TP4",
+                    "created_at": 3
+                },
+                {
+                    "id": "a10",
+                    "from_shift_id": "TP4",
+                    "to_shift_id": "TP1",
+                    "created_at": 4
+                },
+                {
+                    "id": "a11",
+                    "from_shift_id": "TP4",
+                    "to_shift_id": "TP2",
+                    "created_at": 4
+                },
+                {
+                    "id": "a12",
+                    "from_shift_id": "TP4",
+                    "to_shift_id": "TP3",
+                    "created_at": 4
+                }       
+            ]
+        }';
+
+        $response = app()->make('App\Judite\Services\SwapSolver')->solve($exchange_requests);
+        echo($response);
+        
+        
+        
+            
+    }
 }
