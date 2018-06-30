@@ -38,11 +38,12 @@ class SwapSolver implements SwapSolverInterface
 
     public function solve($exchangeRequests){
         try{
-            return $this->client->post(self::URL, ['body'=>$exchangeRequests])->getBody();
+            $response = $this->client->post(self::URL, ['body'=>$exchangeRequests]);
+            return $response->getBody();
         }
         catch(Exception $ex){
-            echo "Failed retrieving result from swap solver service" ;
-            var_dump($ex);
+            echo "Failed retrieving result from swap solver service: " ;
+            echo $ex->getMessage();
         }
     }
 }
